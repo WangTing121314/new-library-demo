@@ -1,0 +1,180 @@
+:host {
+  .card-item {
+    width: 222px;
+    height: 260px;
+    position: relative;
+    margin-right: 9px;
+    margin-bottom: 16px;
+    padding: 8px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 24px 0 rgba(40, 52, 72, 0.1);
+    cursor: pointer;
+    user-select: none;
+
+    .card-coming-tip {
+      position: absolute;
+      top: 18px;
+      left: -5px;
+      z-index: 10;
+    }
+
+    &-img-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 180px;
+      margin-bottom: 16px;
+      padding: 0 10px;
+      background: linear-gradient(180deg, #f5f5f5, #eaeef0 81%, #fafafa 100%);
+      box-shadow: 0 1px 6px 0 #e1e3e5 inset;
+
+      > div:first-child {
+        position: relative;
+
+        > img {
+          width: 100%;
+          max-width: 186px;
+          max-height: 142px;
+          object-fit: cover;
+          border-radius: 2px;
+        }
+
+        .img-alt {
+          position: absolute;
+          top: 8%;
+          left: 28%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 17%;
+          height: 23%;
+          color: #fff;
+          font-weight: 500;
+          font-size: 12px;
+          font-family: PingFangSC, PingFangSC-Medium;
+          line-height: 17px;
+          background: #107cee;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    &-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      width: 100%;
+      height: 180px;
+      background: rgba(0, 0, 0, 0.55);
+
+      .operation-collect {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 4px 0 rgba(40, 52, 72, 0.1), 0 2px 4px 0 rgba(40, 52, 72, 0.1);
+
+        .start-common {
+          font-size: 16px;
+          vertical-align: middle;
+          outline: none;
+          cursor: pointer;
+        }
+
+        .star {
+          color: #f79723;
+        }
+      }
+
+      .operation-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 90px;
+
+        > button {
+          width: 54%;
+          border-radius: 2px;
+        }
+
+        > button:first-of-type {
+          margin-bottom: 8px;
+        }
+
+        .btn-disabled {
+          cursor: no-drop;
+        }
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+
+      .ellipsis() {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+
+      .info-top {
+        display: flex;
+        align-items: center;
+        max-width: 206px;
+        margin-bottom: 8px;
+
+        > img {
+          width: 16px;
+          height: 16px;
+          padding-right: 2px;
+        }
+
+        > span {
+          color: rgba(0, 0, 0, 0.85);
+          font-weight: 400;
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          line-height: 22px;
+          .ellipsis();
+        }
+      }
+
+      .info-bottom {
+        max-width: 206px;
+        padding-left: 16px;
+        color: #8c8c8c;
+        font-size: 12px;
+
+        > span {
+          color: rgba(0, 0, 0, 0.85);
+        }
+
+        > p {
+          .ellipsis();
+        }
+      }
+    }
+
+    &:hover {
+      .card-item-mask {
+        display: block;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .review-popover {
+    .ant-popover-inner-content {
+      padding: 8px 8px 0 8px !important;
+    }
+  }
+}

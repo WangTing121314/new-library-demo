@@ -1,0 +1,81 @@
+<div class="card-item">
+  <!-- <div *ngIf="info.status === 2" class="card-coming-tip">
+    <img src="/assets/img/即将上线.svg" />
+  </div> -->
+  <div class="card-item-img-container">
+    <div>
+      <img [src]="info.icon ? info.icon : '/projects/my-lib/src/assets/img/selfTypeImg.png'" />
+      <div *ngIf="!info.icon" class="img-alt">{{ info.title  }}</div>
+    </div>
+    <div class="card-item-mask">
+      <div class="operation-collect" *ngIf="info.status !== 2 && showStar">
+        <i
+          nz-icon
+          nzType="star"
+          class="start-common"
+          [nzTheme]="info.isStar ? 'fill' : 'outline'"
+          [ngClass]="{ star: info.isStar }"
+          (click)="onStar()"
+        ></i>
+      </div>
+      <ng-container *ngIf="info.status !== 2; else elseStatusTemplate">
+        <div class="operation-btn">
+          <button nz-button nzType="default" (click)="history()">历史记录</button>
+          <ng-container *ngIf="isReview && !info.hasReviewPoint; else elseTemplate">
+            <button
+              nz-button
+              nz-popover
+              nzType="primary"
+              nzPopoverPlacement="rightTop"
+              (click)="onUpload()"
+              [nzPopoverContent]="reviewRuleTemplate"
+              [nzPopoverOverlayClassName]="'review-popover'"
+              class="btn-disabled"
+            >
+              立即上传
+            </button>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <button nz-button nzType="primary" (click)="onUpload()">立即上传</button>
+          </ng-template>
+        </div>
+      </ng-container>
+      <ng-template #elseStatusTemplate>
+        <div class="operation-btn">
+          <button nz-button nzType="default" [ngStyle]="{ visibility: 'hidden' }"></button>
+          <button
+            nz-button
+            nzType="primary"
+            nz-popover
+            [class.btn-disabled]="true"
+            [nzPopoverContent]="contentTemplate"
+            nzPopoverPlacement="rightTop"
+          >
+            立即上传
+          </button>
+          <ng-template #contentTemplate>
+            <i nz-icon nzType="info-circle" [ngStyle]="{ color: '#ff9d1f' }" nzTheme="fill"></i>
+            仅付费账号开通服务
+          </ng-template>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="card-item-info">
+    <div class="info-top">
+      <img *ngIf="info.isHot" src="/assets/img/type/card-label-icon.png" />
+      <span
+        nz-tooltip
+        [ngStyle]="{ paddingLeft: !info.isHot ? '17px' : '' }"
+        [nzTooltipTitle]="info.title.length > 10 ? info.title : null"
+      >
+        {{ info.title }}
+      </span>
+    </div>
+    <div class="info-bottom">
+      <div [ngStyle]="{ visibility: info.tag_number ? 'none' : 'hidden' }">
+        <span>{{ info.tag_number }}个关键要素抽取</span>
+      </div>
+    </div>
+  </div>
+</div>
